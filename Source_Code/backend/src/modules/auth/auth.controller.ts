@@ -8,8 +8,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiBearerAuth, ApiBody, ApiResponse } from '@nestjs/swagger';
-import { LoginDto, SignupDto } from './dto/auth.dto';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiResponse,
+  ApiOkResponse,
+} from '@nestjs/swagger';
+import { LoginDto, SignupDto, AuthResponseDto } from './dto/auth.dto';
 import { EPermission, ERole } from 'src/common/enum/enum';
 import { GoogleOAuthGuard } from '../../common/guards/google-oauth.guard';
 import { RequestPermission } from 'src/common/helper/common.helper';
@@ -24,6 +29,10 @@ export class AuthController {
   @ApiBody({
     description: 'User login',
     type: LoginDto,
+  })
+  @ApiOkResponse({
+    type: AuthResponseDto,
+    description: 'JWT token and payload',
   })
   async signIn(@Body() body: LoginDto) {
     return await this.authService.signInJwt(body.email, body.password);
@@ -84,7 +93,7 @@ export class AuthController {
   }
 
   @Get('profile')
-  @RequestPermission(EPermission.TEST, 'TEST_TBL')
+  @RequestPermission(EPermission.TEST, 'TEST')
   async getProfile(@Req() req) {
     if (!req.user) {
       return { message: 'No user found' };
@@ -94,7 +103,7 @@ export class AuthController {
 
   @Get('adminProtected')
   @ApiGuard()
-  @RequestPermission(EPermission.TEST_ADMIN, 'TEST_TBL')
+  @RequestPermission(EPermission.TEST_ADMIN, 'TEST')
   async adminProtected(@Req() req) {
     if (!req.user) {
       return { message: 'Access denied, no user found' };

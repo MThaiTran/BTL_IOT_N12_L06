@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('Role_Permission')
+@Entity('RolePermission')
 export class RolePermission implements ObjectLiteral {
   @PrimaryColumn({ type: 'integer' })
   permissionId: number;

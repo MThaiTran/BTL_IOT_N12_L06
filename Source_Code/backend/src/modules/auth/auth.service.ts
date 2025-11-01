@@ -61,7 +61,7 @@ export class AuthService {
       const newUser = {
         email,
         name: `${firstName} ${lastName}`,
-        password: this.hashPassword(random),
+        hashedPassword: this.hashPassword(random),
         roleId: 3,
       };
       user = await this.usersService.create(newUser);

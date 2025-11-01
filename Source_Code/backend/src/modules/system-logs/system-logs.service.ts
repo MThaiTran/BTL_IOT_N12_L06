@@ -13,6 +13,6 @@ export class SystemLogsService extends BaseService<SystemLog> {
     @InjectRepository(SystemLog)
     private systemLogRepository: Repository<SystemLog>,
   ) {
-    super(new BaseRepository(systemLogRepository));
+    super(new BaseRepository<SystemLog>(systemLogRepository));
   }
 }

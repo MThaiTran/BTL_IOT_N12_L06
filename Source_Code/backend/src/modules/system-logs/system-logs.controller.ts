@@ -12,6 +12,7 @@ import { CreateSystemLogDto } from './dto/create-system-log.dto';
 import { UpdateSystemLogDto } from './dto/update-system-log.dto';
 import {
   ApiCreateOne,
+  ApiDeleteOne,
   ApiFindAll,
   ApiFindOne,
   ApiUpdateOne,

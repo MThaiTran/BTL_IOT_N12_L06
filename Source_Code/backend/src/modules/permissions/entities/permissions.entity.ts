@@ -7,5 +7,5 @@ export class Permission extends BaseEntity {
   name: string;
 
   @Column({ type: 'text' })
-  des: string;
+  description: string;
 }

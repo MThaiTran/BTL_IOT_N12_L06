@@ -21,8 +21,8 @@ export enum EPermission {
   DELETE_ONE = 'Delete',
   GET_ONE = 'GetOne',
   GET_ALL = 'GetAll',
-  TEST = 'TEST',
-  TEST_ADMIN = 'TEST_ADMIN',
+  TEST = 'TestAuth',
+  TEST_ADMIN = 'TestAdminAuth',
   CREATE_EXAM_TEMPLATE = 'CreateResultFromExam',
 }
 

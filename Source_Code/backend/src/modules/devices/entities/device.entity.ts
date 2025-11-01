@@ -1,8 +1,9 @@
 import { BaseEntity } from 'src/base/base.entity';
 import { DeviceType } from 'src/modules/device-types/entities/device-type.entity';
 import { User } from 'src/modules/users/entities/user.entity';
-import { Column, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
+@Entity('Device')
 export class Device extends BaseEntity {
   @Column({ type: 'varchar', length: 100 })
   name: string;

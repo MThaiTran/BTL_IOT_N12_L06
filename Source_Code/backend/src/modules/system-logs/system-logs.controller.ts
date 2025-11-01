@@ -20,8 +20,10 @@ import {
 import { SystemLog } from './entities/system-log.entity';
 import { RequestPermission } from 'src/common/helper/common.helper';
 import { EPermission } from 'src/common/enum/enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 const tableName = 'SystemLog';
+@ApiBearerAuth()
 @Controller('system-logs')
 export class SystemLogsController {
   constructor(private readonly systemLogsService: SystemLogsService) {}

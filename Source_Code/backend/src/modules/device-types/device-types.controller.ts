@@ -20,8 +20,10 @@ import {
 import { DeviceType } from './entities/device-type.entity';
 import { RequestPermission } from 'src/common/helper/common.helper';
 import { EPermission } from 'src/common/enum/enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 const tableName = 'DeviceType';
+@ApiBearerAuth()
 @Controller('device-types')
 export class DeviceTypesController {
   constructor(private readonly deviceTypesService: DeviceTypesService) {}

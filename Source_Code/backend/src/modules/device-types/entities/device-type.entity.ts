@@ -1,7 +1,8 @@
 import { BaseEntity } from 'src/base/base.entity';
 import { EDeviceUnit } from 'src/common/enum/enum';
-import { Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
+@Entity('DeviceType')
 export class DeviceType extends BaseEntity {
   @Column({ type: 'varchar', length: 255 })
   name: string;

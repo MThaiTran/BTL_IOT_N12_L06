@@ -2,8 +2,9 @@ import { BaseEntity } from 'src/base/base.entity';
 import { EDeviceLog } from 'src/common/enum/enum';
 import { Device } from 'src/modules/devices/entities/device.entity';
 import { User } from 'src/modules/users/entities/user.entity';
-import { Column, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
+@Entity('SystemLog')
 export class SystemLog extends BaseEntity {
   @Column({ type: 'varchar', length: 255 })
   log: EDeviceLog;

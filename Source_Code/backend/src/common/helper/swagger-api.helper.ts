@@ -9,7 +9,7 @@ import {
   ApiQuery,
   ApiResponse,
 } from '@nestjs/swagger';
-// import { PaginatedResponseDto } from '../../modules/paginate/dto/pagionated-respond.dto';
+import { PaginatedResponseDto } from 'src/common/paginated/pagionated-respond.dto';
 
 export function ApiFindAll(ItemDto: any) {
   const itemKeys: MethodDecorator[] = [];
@@ -33,20 +33,20 @@ export function ApiFindAll(ItemDto: any) {
   );
 }
 
-// export function ApiFindAllPaginate(ItemDto: any) {
-//   return applyDecorators(
-//     ApiQuery({ name: 'page', required: false, type: String }),
-//     ApiQuery({ name: 'limit', required: false, type: String }),
-//     ApiQuery({ name: 'cursor', required: false, type: String }),
+export function ApiFindAllPaginate(ItemDto: any) {
+  return applyDecorators(
+    ApiQuery({ name: 'page', required: false, type: String }),
+    ApiQuery({ name: 'limit', required: false, type: String }),
+    ApiQuery({ name: 'cursor', required: false, type: String }),
 
-//     ApiOperation({ summary: 'Get all items with pagination' }),
-//     ApiOkResponse({
-//       description: 'List of paginated results',
-//       type: PaginatedResponseDto<typeof ItemDto>,
-//     }),
-//     ApiBadRequestResponse({ description: 'Invalid query parameters' }),
-//   );
-// }
+    ApiOperation({ summary: 'Get all items with pagination' }),
+    ApiOkResponse({
+      description: 'List of paginated results',
+      type: PaginatedResponseDto<typeof ItemDto>,
+    }),
+    ApiBadRequestResponse({ description: 'Invalid query parameters' }),
+  );
+}
 
 export function ApiFindOne(ItemDto: any) {
   return applyDecorators(
